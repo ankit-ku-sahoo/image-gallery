@@ -7,7 +7,7 @@ import updateName from './updateName.js'
 let data = newData
 
 const dataList = document.getElementById('namesContainer')
-const image = document.getElementById('image')
+const actualImage = document.getElementById('image')
 const imageNameInput = document.getElementById('imageNameInput')
 
 const defaultPreID = 'img'
@@ -38,11 +38,12 @@ const loadData = () => {
         dataList.appendChild(li)
 
         const individualImgName = document.getElementById(defaultPreName+index)
-        individualImgName.innerHTML = getTruncatedName(item.title, defaultPreName+index)
+        const nameWidth = p.clientWidth
+        individualImgName.innerHTML = getTruncatedName(item.title, nameWidth)
     })
 
-    image.src = data[counter].previewImage
-    image.alt = data[counter].title
+    actualImage.src = data[counter].previewImage
+    actualImage.alt = data[counter].title
     imageNameInput.value = data[counter].title
 }
 

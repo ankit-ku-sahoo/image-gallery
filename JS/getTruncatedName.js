@@ -1,4 +1,3 @@
-// const imgName = document.getElementById
 const computeTextLength = (text) => {
     const font = '15px arial'
 
@@ -10,22 +9,19 @@ const computeTextLength = (text) => {
     return width
 }
 
-export default function getTruncatedName (name, nameID) {
-    const imgName = document.getElementById(nameID)
-    const width = imgName.clientWidth
-
+export default function getTruncatedName (name, width) {
     if(width >= computeTextLength(name))
         return name
 
     var length = width - computeTextLength('...')
-    var indexStartFirst = 0
-    var indexStartSecond = !(name.length%2)
+    var indexStartFirst = 1
+    var indexStartSecond = 1
 
-    while(computeTextLength(name.slice(0,indexStartFirst+1)) < length/2) {
+    while(computeTextLength(name.slice(0,indexStartFirst)) < length/2) {
         indexStartFirst++
     }
-    while(computeTextLength(name.slice(-indexStartSecond-1)) < length/2) {
+    while(computeTextLength(name.slice(-indexStartSecond)) < length/2) {
         indexStartSecond++
     }
-    return name.slice(0,indexStartFirst) + '...' + name.slice(-indexStartSecond)
+    return name.slice(0,indexStartFirst-2) + '...' + name.slice(-indexStartSecond+1)
 }
