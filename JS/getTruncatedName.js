@@ -1,5 +1,6 @@
-const computeTextLength = (text) => {
-    const font = '15px arial'
+const computeTextLength = (text, nameID) => {
+    const individualImgName = document.getElementById(nameID)
+    const font = window.getComputedStyle(individualImgName, null).font
 
     const canvas = document.createElement("canvas")
     const context = canvas.getContext("2d")
@@ -9,18 +10,18 @@ const computeTextLength = (text) => {
     return width
 }
 
-export default function getTruncatedName (name, width) {
-    if(width >= computeTextLength(name))
+export default function getTruncatedName (name, width, nameID) {
+    if(width >= computeTextLength(name, nameID))
         return name
 
-    var length = width - computeTextLength('...')
+    var length = width - computeTextLength('...', nameID)
     var indexStartFirst = 1
     var indexStartSecond = 1
 
-    while(computeTextLength(name.slice(0,indexStartFirst)) < length/2) {
+    while(computeTextLength(name.slice(0,indexStartFirst), nameID) < length/2) {
         indexStartFirst++
     }
-    while(computeTextLength(name.slice(-indexStartSecond)) < length/2) {
+    while(computeTextLength(name.slice(-indexStartSecond), nameID) < length/2) {
         indexStartSecond++
     }
     return name.slice(0,indexStartFirst-2) + '...' + name.slice(-indexStartSecond+1)

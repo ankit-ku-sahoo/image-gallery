@@ -39,7 +39,7 @@ const loadData = () => {
 
         const individualImgName = document.getElementById(defaultPreName+index)
         const nameWidth = p.clientWidth
-        individualImgName.innerHTML = getTruncatedName(item.title, nameWidth)
+        individualImgName.innerHTML = getTruncatedName(item.title, nameWidth, defaultPreName+index)
     })
 
     actualImage.src = data[counter].previewImage
