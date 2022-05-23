@@ -8,18 +8,24 @@
 #namesContainer {
     list-style: none;
     width: 300px;
+    max-width: 40%;
+}
+
+#imageContainer {
+    max-width: 60%;
 }
 
 #imageContainer, #image {
     width: 500px;
-    height: 750px;
+    aspect-ratio: 2/3;
     object-fit: cover;
     object-position: center;
     border-radius: 5px;
 }
 
-#imageName {
-    width: 400px;
+#imageNameInput {
+    width: 100%;
+    font-size: 17px;
     border: none;
     text-align: center;
 }
@@ -30,6 +36,7 @@
 
 #namesContainer li {
     padding: 5px 10px;
+    margin: 5px 0;
     cursor: pointer;
     display: flex;
     flex-direction: row;
@@ -43,15 +50,14 @@
 }
 
 .imgName {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    padding-left: 10px;
+    font: 15px arial;
+    width: -webkit-fill-available;
 }
 
 .icon {
     width: 40px;
     aspect-ratio: 1;
+    padding-right: 10px;
     object-fit: cover;
     object-position: center;
     border-radius: 5px;

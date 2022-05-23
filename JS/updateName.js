@@ -1,7 +1,7 @@
-const imageName = document.getElementById('imageName')
+const imageNameInput = document.getElementById('imageNameInput')
 
 export default function updateName (event, counter, data) {
-    const newTitle = imageName.value
+    const newTitle = imageNameInput.value
     var newData = Object.values(data)
 
     newData[counter].title = newTitle

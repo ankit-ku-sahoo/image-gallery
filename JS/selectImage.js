@@ -1,5 +1,5 @@
 const image = document.getElementById('image')
-const imageName = document.getElementById('imageName')
+const imageNameInput = document.getElementById('imageNameInput')
 
 export default function selectImage (IDOfSelected, data, counter, defaultPreID) {
     const newIndex = Number(IDOfSelected.split(defaultPreID)[1])
@@ -14,8 +14,7 @@ export default function selectImage (IDOfSelected, data, counter, defaultPreID) 
 
     image.src = data[newIndex].previewImage
     image.alt = data[newIndex].title
-    imageName.value = data[newIndex].title
-    
+    imageNameInput.value = data[newIndex].title
 
     return newIndex
 }
