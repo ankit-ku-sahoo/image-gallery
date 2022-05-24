@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>Image Gallery</title>
-        <link rel="stylesheet" href="styles.css">
-        <script type="module" src="JS/script.js"></script>
-        <script type="module" src="JS/data.js"></script>
-        <script type="module" src="JS/getTruncatedName.js"></script>
-        <script type="module" src="JS/selectImage.js"></script>
-        <script type="module" src="JS/keyboardFunction.js"></script>
-        <script type="module" src="JS/updateName.js"></script>
-    </head>
-    <body>
 
-        <div id="galleryContainer">
-            <ul id="namesContainer"></ul>
+<head>
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="JS/script.js"></script>
+    <script type="module" src="JS/data.js"></script>
+    <script type="module" src="JS/getTruncatedName.js"></script>
+    <script type="module" src="JS/selectImage.js"></script>
+    <script type="module" src="JS/keyboardFunction.js"></script>
+    <script type="module" src="JS/updateName.js"></script>
+</head>
 
-            <div id="imageContainer">
-                <img id="image" src="" alt="Loading..."/>
-                <input type="text" id="imageNameInput">
-            </div>
-            
+<body>
+
+    <!-- kebab case in id names 'galleryContainer' -->
+    <!-- gallery-container -->
+
+    <div id="galleryContainer">
+        <ul id="namesContainer"></ul>
+        <div id="imageContainer">
+            <img id="image" src="" alt="Loading..." />
+            <input type="text" id="imageNameInput">
         </div>
+    </div>
 
-    </body>
+</body>
+
 </html>
