@@ -1,58 +1,20 @@
-import newData from './data.js'
-import selectImage from './selectImage.js'
-import getTruncatedName from './getTruncatedName.js'
-import keyboardFunction from './keyboardFunction.js'
-import updateName from './updateName.js'
+import newData from './utils/data.js'
+import render from './utils/render.js'
+import keyboardFunction from './utils/keyboardFunction.js'
+import updateName from './utils/updateName.js'
 
 let data = newData
 
-const dataList = document.getElementById('namesContainer')
-const actualImage = document.getElementById('image')
-const imageNameInput = document.getElementById('imageNameInput')
+const imageNameInput = document.getElementById('image-name-input')
 
-const defaultPreID = 'img'
-const defaultPreName = 'imageName'
-let counter = 0
+window.addEventListener('load', render(data[0].id, data))
 
-const loadData = () => {
-    dataList.innerHTML = ""
+window.addEventListener('keydown', (e) => keyboardFunction(e.key, data))
 
-    data.map((item, index) => {
-        var li = document.createElement("li")
-        var iconImg = document.createElement("img")
-        var p = document.createElement("p")
+imageNameInput.addEventListener('input', () => {
+    const imageRef = document.querySelector("li[is-active=true]")
+    const imageID = imageRef.id
 
-        iconImg.setAttribute('class', 'icon')
-        iconImg.src = item.previewImage
-        iconImg.alt = 'icon'
-
-        p.setAttribute('class', 'imgName')
-        p.setAttribute('id', defaultPreName+index)
-
-        li.setAttribute('id', defaultPreID+index)
-        li.onclick = (e) => counter = selectImage(defaultPreID+index, data, counter, defaultPreID)
-        if(index==counter)    li.setAttribute('class', 'is-active')
-
-        li.appendChild(iconImg)
-        li.appendChild(p)
-        dataList.appendChild(li)
-
-        const individualImgName = document.getElementById(defaultPreName+index)
-        const nameWidth = p.clientWidth
-        individualImgName.innerHTML = getTruncatedName(item.title, nameWidth, defaultPreName+index)
-    })
-
-    actualImage.src = data[counter].previewImage
-    actualImage.alt = data[counter].title
-    imageNameInput.value = data[counter].title
-}
-
-window.addEventListener('load', loadData)
-
-window.addEventListener('keydown', (e) => counter = keyboardFunction(e, data, counter,defaultPreID))
-
-imageNameInput.addEventListener('input', (e) => {
-    data = updateName(e, counter, data)
-    loadData()
+    data = updateName(data)
+    render(imageID, data)
 })
-

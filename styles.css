@@ -1,62 +1,56 @@
-#galleryContainer {
-    width: fit-content;
+#gallery-container {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
     margin: 40px auto 0 auto;
 }
 
-#namesContainer {
+#names-container {
     list-style: none;
     width: 300px;
-    max-width: 40%;
 }
 
-#imageContainer {
-    max-width: 60%;
-}
-
-#imageContainer, #image {
+#image-container, #image {
     width: 500px;
-    aspect-ratio: 2/3;
+    height: 700px;
     object-fit: cover;
     object-position: center;
     border-radius: 5px;
 }
 
-#imageNameInput {
+#image-name-input {
     width: 100%;
     font-size: 17px;
     border: none;
     text-align: center;
 }
 
-#namesContainer, #imageContainer {
+.p-10 {
     padding: 10px;
 }
 
-#namesContainer li {
+li[is-active] {
     padding: 5px 10px;
     margin: 5px 0;
     cursor: pointer;
     display: flex;
-    flex-direction: row;
     align-items: center;
 }
 
-.is-active {
+li[is-active=true] {
     border-radius: 3px;
     background-color: rgb(0, 0, 222);
     color: aliceblue;
 }
 
-.imgName {
-    font: 15px arial;
-    width: -webkit-fill-available;
+.imagename {
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
 }
 
 .icon {
     width: 40px;
-    aspect-ratio: 1;
+    height: 40px;
     padding-right: 10px;
     object-fit: cover;
     object-position: center;
