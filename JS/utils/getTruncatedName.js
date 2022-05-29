@@ -1,11 +1,36 @@
-const canvas = document.createElement("canvas")
-const context = canvas.getContext("2d")
-
 const computeTextLength = (text, font) => {
-    context.font = font
-    const { width } = context.measureText(text)
+    const widthTester = document.createElement('span')
+    widthTester.innerHTML = text
+    document.body.appendChild(widthTester)
+
+    const width = widthTester.offsetWidth
+
+    document.body.removeChild(widthTester)
 
     return width
+}
+
+const binarySearchForOptimalLength = (startIndex, endIndex, text, font, requiredWidth) => {
+    let optimalIndex = 0
+    while(startIndex <= endIndex) {
+        let tempIndex = Math.floor((startIndex+endIndex)/2)
+        let newText = (
+            tempIndex >= 0 ?
+                text.slice(0,tempIndex)
+            :
+                text.slice(-tempIndex)
+        )
+
+        if(computeTextLength(newText, font) <= requiredWidth) {
+            optimalIndex = tempIndex
+            startIndex = tempIndex + 1
+        }
+        else
+            endIndex = tempIndex - 1
+    }
+
+    return optimalIndex
+
 }
 
 export default function getTruncatedName (name, imagenameRef) {
@@ -16,14 +41,10 @@ export default function getTruncatedName (name, imagenameRef) {
         return name
 
     const textLength = textWidth - computeTextLength('...', font)
-    var indexStartFirst = 1
-    var indexStartSecond = 1
+    let requiredWidth = Math.ceil(textLength/2)
+    
+    let indexStartFirst = binarySearchForOptimalLength(0, name.length-1, name, font, requiredWidth)
+    let indexStartSecond = binarySearchForOptimalLength(-name.length, 0, name, font, requiredWidth)
 
-    while(computeTextLength(name.slice(0,indexStartFirst), font) < textLength/2) {
-        indexStartFirst++
-    }
-    while(computeTextLength(name.slice(-indexStartSecond), font) < textLength/2) {
-        indexStartSecond++
-    }
-    return name.slice(0,indexStartFirst-2) + '...' + name.slice(-indexStartSecond+1)
+    return name.slice(0,indexStartFirst) + '...' + name.slice(-indexStartSecond+1)
 }
