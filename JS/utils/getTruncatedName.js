@@ -1,5 +1,6 @@
 const computeTextLength = (text, font) => {
     const widthTester = document.createElement('span')
+    widthTester.style.font = font
     widthTester.innerHTML = text
     document.body.appendChild(widthTester)
 
@@ -46,5 +47,7 @@ export default function getTruncatedName (name, imagenameRef) {
     let indexStartFirst = binarySearchForOptimalLength(0, name.length-1, name, font, requiredWidth)
     let indexStartSecond = binarySearchForOptimalLength(-name.length, 0, name, font, requiredWidth)
 
-    return name.slice(0,indexStartFirst) + '...' + name.slice(-indexStartSecond+1)
+    const truncatedName = name.slice(0,indexStartFirst) + '...' + name.slice(-indexStartSecond+1)
+
+    return truncatedName
 }

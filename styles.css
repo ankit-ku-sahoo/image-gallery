@@ -28,7 +28,7 @@
     padding: 10px;
 }
 
-li[is-active] {
+li[is-active] { /* for list of images */
     padding: 5px 10px;
     margin: 5px 0;
     cursor: pointer;
@@ -36,7 +36,7 @@ li[is-active] {
     align-items: center;
 }
 
-li[is-active=true] {
+li[is-active=true] {    /* for active image */
     border-radius: 3px;
     background-color: rgb(0, 0, 222);
     color: aliceblue;
@@ -50,8 +50,8 @@ li[is-active=true] {
 
 .icon {
     width: 40px;
-    height: 40px;
-    padding-right: 10px;
+    aspect-ratio: 1;
+    margin-right: 10px;
     object-fit: cover;
     object-position: center;
     border-radius: 5px;
