@@ -4,21 +4,28 @@
     <head>
         <title>Image Gallery</title>
         <link rel="stylesheet" href="styles.css">
+
         <script type="module" src="JS/script.js"></script>
-        <script type="module" src="JS/data.js"></script>
-        <script type="module" src="JS/getTruncatedName.js"></script>
-        <script type="module" src="JS/selectImage.js"></script>
-        <script type="module" src="JS/keyboardFunction.js"></script>
-        <script type="module" src="JS/updateName.js"></script>
+        
+        <!-- <script type="module" src="JS/utils/render.js"></script>
+        <script type="module" src="JS/utils/data.js"></script>
+        <script type="module" src="JS/utils/getTruncatedName.js"></script>
+        <script type="module" src="JS/utils/selectImage.js"></script>
+        <script type="module" src="JS/utils/keyboardFunction.js"></script>
+        <script type="module" src="JS/utils/updateName.js"></script>
+
+        <script type="module" src="JS/modules/icon.js"></script>
+        <script type="module" src="JS/modules/imagename.js"></script>
+        <script type="module" src="JS/modules/imageListItems.js"></script> -->
     </head>
     <body>
 
-        <div id="galleryContainer">
-            <ul id="namesContainer"></ul>
+        <div id="gallery-container">
+            <ul id="names-container" class="p-10"></ul>
 
-            <div id="imageContainer">
+            <div id="image-container" class="p-10">
                 <img id="image" src="" alt="Loading..."/>
-                <input type="text" id="imageNameInput">
+                <input type="text" id="image-name-input">
             </div>
             
         </div>
